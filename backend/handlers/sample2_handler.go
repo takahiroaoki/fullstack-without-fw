@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"backend/handlers/components"
 	"backend/handlers/tmpls"
-	"backend/handlers/view_helpers"
 )
 
 type sample2Handler struct {
@@ -18,7 +17,11 @@ type Sample2View struct {
 
 func (h *sample2Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	h.tmpl.ExecuteTemplate(w, tmpls.Layout, Sample2View{
-		CounterList: view_helpers.GetCounterListForSample2(),
+		CounterList: components.NewCounterList([]components.Counter{
+			components.NewCounter(0),
+			components.NewCounter(0),
+			components.NewCounter(0),
+		}),
 	})
 }
 
