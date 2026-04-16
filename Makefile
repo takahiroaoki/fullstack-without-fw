@@ -6,5 +6,7 @@ copy:
 	mkdir -p backend/resources
 	cp -r frontend/build/* backend/resources/
 
-run: front copy
+back:
 	cd backend && go run main.go
+
+run: front copy back
