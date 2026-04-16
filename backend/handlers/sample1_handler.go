@@ -3,21 +3,27 @@ package handlers
 import (
 	"html/template"
 	"net/http"
+	"backend/handlers/components"
+	"backend/handlers/tmpls"
+	"backend/handlers/view_helpers"
 )
 
 type sample1Handler struct {
 	tmpl *template.Template
 }
 
+type Sample1View struct {
+	Counter components.Counter
+}
+
 func (h *sample1Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	h.tmpl.ExecuteTemplate(w, "layout", map[string]any{"Message": "Hello, World!"})
+	h.tmpl.ExecuteTemplate(w, tmpls.Layout, Sample1View{
+		Counter: view_helpers.GetCounterForSample1(),
+	})
 }
 
 func NewSample1Handler() http.Handler {
 	return &sample1Handler{
-		tmpl: template.Must(template.ParseFiles(
-				"resources/templates/pages/sample1/index.html",
-				"resources/templates/layout/index.html",
-			)),
+		tmpl: tmpls.GetPageTmpl(tmpls.Sample1),
 	}	
 }

@@ -1,0 +1,7 @@
+{{ define "counter" }}
+    <div data-ref="{{ .Ref }}" data-initial-count="{{ .Count }}" class="counter">
+        <button class="counter__button counter__decrement">-</button>
+        <span class="counter__count"></span>
+        <button class="counter__button counter__increment">+</button>
+    </div>
+{{ end }}
