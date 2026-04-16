@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  demo-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/workspaces/demo-app
+    working_dir: /workspaces/demo-app
+    ports:
+      - 8080:8080
+    tty: true
