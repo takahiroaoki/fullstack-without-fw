@@ -27,6 +27,6 @@ func (h *sample2Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func NewSample2Handler() http.Handler {
 	return &sample2Handler{
-		tmpl: tmpls.GetPageTmpl(tmpls.Sample2),
+		tmpl: tmpls.GetPageTmpl(tmpls.PageNameSample2),
 	}	
 }

@@ -23,6 +23,6 @@ func (h *sample1Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 func NewSample1Handler() http.Handler {
 	return &sample1Handler{
-		tmpl: tmpls.GetPageTmpl(tmpls.Sample1),
+		tmpl: tmpls.GetPageTmpl(tmpls.PageNameSample1),
 	}	
 }

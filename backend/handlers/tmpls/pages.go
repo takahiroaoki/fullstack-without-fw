@@ -4,34 +4,35 @@ import (
 	"html/template"
 )
 
-var pageTmplsMap map[string]*template.Template
+type PageName string
+
+var pageTmplsMap map[PageName]*template.Template
 
 const (
-	// tmpl names
+	// root names
 	Layout = "layout"
 	// file paths
-	sample1TmplPath = "resources/templates/pages/sample1/index.html"
-	sample2TmplPath = "resources/templates/pages/sample2/index.html"
-	layoutTmplPath = "resources/templates/layout/layout.html"
+	tmplPathSample1 = "resources/templates/pages/sample1/index.html"
+	tmplPathSample2 = "resources/templates/pages/sample2/index.html"
+	tmplPathLayout = "resources/templates/layout/layout.html"
 	// page names
-	Sample1 = "sample1"
-	Sample2 = "sample2"
+	PageNameSample1 PageName = "sample1"
+	PageNameSample2 PageName = "sample2"
 )
 
 func init() {
-	// Clone component templates for each page to avoid template name conflicts
-	sample1Base, _ := componentTmpls.Clone()
-	sample2Base, _ := componentTmpls.Clone()
-
-	sample1, _ := sample1Base.ParseFiles(sample1TmplPath, layoutTmplPath)
-	sample2, _ := sample2Base.ParseFiles(sample2TmplPath, layoutTmplPath)
-
-	pageTmplsMap = map[string]*template.Template{
-		Sample1: sample1,
-		Sample2: sample2,
+	pageTmplsMap = map[PageName]*template.Template{
+		PageNameSample1: getParsedTmpl(tmplPathSample1, tmplPathLayout),
+		PageNameSample2: getParsedTmpl(tmplPathSample2, tmplPathLayout),
 	}
 }
 
-func GetPageTmpl(pageName string) *template.Template {
+func getParsedTmpl(tmplPaths ...string) *template.Template {
+	base, _ := componentTmpls.Clone()
+	tmpl, _ := base.ParseFiles(tmplPaths...)
+	return tmpl
+}
+
+func GetPageTmpl(pageName PageName) *template.Template {
 	return pageTmplsMap[pageName]
 }
