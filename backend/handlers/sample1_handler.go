@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"backend/handlers/components"
 	"backend/handlers/tmpls"
-	"backend/handlers/view_helpers"
 )
 
 type sample1Handler struct {
@@ -18,12 +17,12 @@ type Sample1View struct {
 
 func (h *sample1Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	h.tmpl.ExecuteTemplate(w, tmpls.Layout, Sample1View{
-		Counter: view_helpers.GetCounterForSample1(),
+		Counter: components.NewCounter(0),
 	})
 }
 
 func NewSample1Handler() http.Handler {
 	return &sample1Handler{
-		tmpl: tmpls.GetPageTmpl(tmpls.Sample1),
+		tmpl: tmpls.GetPageTmpl(tmpls.PageNameSample1),
 	}	
 }
