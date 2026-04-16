@@ -68,12 +68,10 @@ module.exports = {
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),
     ...getHtmlWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'static/pages/[name]/index.css',
-    }),
-    new CleanWebpackPlugin({
-      dry: true,
     }),
   ],
 };

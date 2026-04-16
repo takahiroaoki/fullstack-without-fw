@@ -3,7 +3,10 @@
     <link rel="stylesheet" href="static/pages/sample1/index.css">
 {{ end }}
 {{ define "contents" }}
-    {{ .Message }}
+    <h1 class="header">Sample1: ViewModelを用いた単一コンポーネント</h1>
+    <div class="counter-wrapper">
+        {{ template "counter" .Counter }}
+    </div>
 {{ end }}
 {{ define "script" }}
     <script src="static/pages/sample1/index.js"></script>
