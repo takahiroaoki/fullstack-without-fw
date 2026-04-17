@@ -1,3 +1,6 @@
+front-check:
+	cd frontend && npm run format && npm run lint
+
 front:
 	cd frontend && npm run build
 

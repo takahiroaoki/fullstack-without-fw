@@ -1,13 +1,9 @@
 {{ define "head" }}
-    <title>Sample2</title>
-    <link rel="stylesheet" href="static/pages/sample2/index.css">
-{{ end }}
-{{ define "contents" }}
-    <h1 class="header">Sample2: ViewModelを用いた複合コンポーネント</h1>
-    <div class="counter-list-wrapper">
-        {{ template "counter_list" .CounterList }}
-    </div>
-{{ end }}
-{{ define "script" }}
-    <script type="module" src="static/pages/sample2/index.js"></script>
+<title>Sample2</title>
+<link rel="stylesheet" href="static/pages/sample2/index.css" />
+{{ end }} {{ define "contents" }}
+<h1 class="header">Sample2: ViewModelを用いた複合コンポーネント</h1>
+<div class="counter-list-wrapper">{{ template "counter_list" .CounterList }}</div>
+{{ end }} {{ define "script" }}
+<script type="module" src="static/pages/sample2/index.js"></script>
 {{ end }}
