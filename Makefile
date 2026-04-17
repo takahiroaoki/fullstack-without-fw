@@ -2,8 +2,8 @@ front:
 	cd frontend && npm run build
 
 copy:
-	rm -rf backend/resources/
 	mkdir -p backend/resources
+	rm -rf backend/resources/*
 	cp -r frontend/build/* backend/resources/
 
 back:
