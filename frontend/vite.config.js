@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 import { readdirSync, statSync, existsSync, mkdirSync, copyFileSync } from 'fs';
 
+/* eslint-disable no-undef */
 const baseDir = resolve(__dirname);
 const srcDir = resolve(baseDir, 'src');
 const outDir = resolve(baseDir, '../backend/resources');
