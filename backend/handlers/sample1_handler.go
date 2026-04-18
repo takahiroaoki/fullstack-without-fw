@@ -1,10 +1,10 @@
 package handlers
 
 import (
-	"html/template"
-	"net/http"
 	"backend/handlers/components"
 	"backend/handlers/tmpls"
+	"html/template"
+	"net/http"
 )
 
 type sample1Handler struct {
@@ -24,5 +24,5 @@ func (h *sample1Handler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func NewSample1Handler() http.Handler {
 	return &sample1Handler{
 		tmpl: tmpls.GetPageTmpl(tmpls.PageNameSample1),
-	}	
+	}
 }

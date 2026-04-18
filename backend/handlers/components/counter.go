@@ -1,13 +1,13 @@
 package components
 
 type Counter struct {
-	Ref		  string
+	Ref   string
 	Count int
 }
 
 func NewCounter(count int) Counter {
 	return Counter{
-		Ref: "counter",
+		Ref:   "counter",
 		Count: count,
 	}
 }
