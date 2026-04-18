@@ -6,10 +6,10 @@ export type CounterListState = { total: number };
 export class CounterList extends ViewModel<CounterListState> {
     private counters: Counter[];
 
-    constructor(elem: HTMLElement, initialState: CounterListState) {
-        super(elem, initialState);
-        this.counters = this.selectAll('[data-ref="counter"]').map((counterElem) => new Counter(counterElem, { count: 0 }));
-        this.setState({ total: this.getTotalCount() }, { render: true, emit: false });
+    constructor(elem: HTMLElement) {
+        super(elem, { total: 0 });
+        this.counters = this.selectAll('[data-ref="counter"]').map((counterElem) => new Counter(counterElem));
+        this.setState({ total: this.getTotalCount() });
 
         this.counters.forEach((counter) => {
             counter.on(EVENT_UPDATE_STATE, () => {

@@ -3,9 +3,9 @@ import { EventSetting, ViewModel } from '@src/core/view-model';
 export type CounterState = { count: number };
 
 export class Counter extends ViewModel<CounterState> {
-    constructor(elem: HTMLElement, initialState: CounterState) {
-        super(elem, initialState);
-        this.setState({ count: this.getInitialCount() }, { render: true, emit: false });
+    constructor(elem: HTMLElement, initialState?: CounterState) {
+        super(elem, initialState ?? { count: 0 });
+        this.setState({ count: initialState?.count ?? this.getInitialCount() });
     }
 
     private getInitialCount(): number {
