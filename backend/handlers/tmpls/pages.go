@@ -14,7 +14,7 @@ const (
 	// file paths
 	tmplPathSample1 = "resources/templates/pages/sample1/index.html"
 	tmplPathSample2 = "resources/templates/pages/sample2/index.html"
-	tmplPathLayout = "resources/templates/layout/layout.html"
+	tmplPathLayout  = "resources/templates/layout/layout.html"
 	// page names
 	PageNameSample1 PageName = "sample1"
 	PageNameSample2 PageName = "sample2"
