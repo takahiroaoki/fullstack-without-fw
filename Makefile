@@ -1,3 +1,4 @@
+.PHONY: run front back front-check
 run: front back
 
 front:
