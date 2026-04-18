@@ -1,6 +1,5 @@
-FROM amazonlinux:2023.8.20250818.0
+FROM amazonlinux:2023.11.20260406.2
 
-# dnf fixes tool versions
 RUN dnf install -y \
          git \
          vi \

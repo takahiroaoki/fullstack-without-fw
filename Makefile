@@ -1,5 +1,4 @@
-front-check:
-	cd frontend && npm run format && npm run lint
+run: front back
 
 front:
 	cd frontend && npm run build
@@ -7,4 +6,5 @@ front:
 back:
 	cd backend && go run main.go
 
-run: front back
+front-check:
+	cd frontend && npm run format && npm run lint
