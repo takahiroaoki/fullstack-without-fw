@@ -15,12 +15,12 @@ export class ViewModel<T> {
     private elem: HTMLElement;
     private state: T;
     private emitter = new EventTarget();
-    private dataset: DOMStringMap;
 
     constructor(elem: HTMLElement, initialState: T) {
         this.elem = elem;
         this.state = initialState;
-        this.dataset = this.elem.dataset;
+
+        this.render();
 
         this.getEventSettings().forEach((e: EventSetting) => {
             this.select(e.selector)?.addEventListener(e.eventName, e.callback);
@@ -44,7 +44,7 @@ export class ViewModel<T> {
     }
 
     protected getDataset(): DOMStringMap {
-        return this.dataset;
+        return this.elem.dataset;
     }
 
     protected render(): void {}
