@@ -6,11 +6,6 @@ export type EventSetting = {
     callback: EventListenerOrEventListenerObject;
 };
 
-type SetStateOptions = {
-    render: boolean;
-    emit: boolean;
-};
-
 export class ViewModel<T> {
     private elem: HTMLElement;
     private state: T;
@@ -53,21 +48,11 @@ export class ViewModel<T> {
         return this.state;
     }
 
-    public setState(
-        partial: Partial<T>,
-        options: SetStateOptions = {
-            render: true,
-            emit: true,
-        }
-    ) {
+    public setState(partial: Partial<T>): void {
         const newState = { ...this.state, ...partial };
         this.state = newState;
-        if (options.render) {
-            this.render();
-        }
-        if (options.emit) {
-            this.emit(EVENT_UPDATE_STATE);
-        }
+        this.render();
+        this.emit(EVENT_UPDATE_STATE);
     }
 
     public on(eventName: string, callback: EventListenerOrEventListenerObject): void {
