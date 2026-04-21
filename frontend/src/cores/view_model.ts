@@ -1,4 +1,4 @@
-import { StateManager } from './state-manager';
+import { StateManager } from './state_manager';
 
 export type EventSetting = {
     selector: string;

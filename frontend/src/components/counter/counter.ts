@@ -1,4 +1,4 @@
-import { EventSetting, ViewModel } from '@src/cores/view-model';
+import { EventSetting, ViewModel } from '@src/cores/view_model';
 
 type CounterState = { count: number };
 

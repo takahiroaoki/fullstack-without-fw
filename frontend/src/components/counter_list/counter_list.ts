@@ -1,5 +1,5 @@
-import { ViewModel } from '@src/cores/view-model';
-import { EVENT_UPDATE_STATE } from '@src/cores/state-manager';
+import { ViewModel } from '@src/cores/view_model';
+import { EVENT_UPDATE_STATE } from '@src/cores/state_manager';
 import { Counter } from '@src/components/counter/counter';
 
 type CounterListState = { total: number };
