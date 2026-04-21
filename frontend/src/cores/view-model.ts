@@ -1,4 +1,4 @@
-export const EVENT_UPDATE_STATE = 'event_update_state';
+import { StateManager } from "./state-manager";
 
 export type EventSetting = {
     selector: string;
@@ -6,17 +6,14 @@ export type EventSetting = {
     callback: EventListenerOrEventListenerObject;
 };
 
-export class ViewModel<T> {
+export class ViewModel<T> extends StateManager<T> {
     private elem: HTMLElement;
-    private state: T;
-    private emitter = new EventTarget();
 
     constructor(elem: HTMLElement, initialState: T) {
+        super(initialState);
+        
         this.elem = elem;
-        this.state = initialState;
-
         this.render();
-
         this.getEventSettings().forEach((e: EventSetting) => {
             this.select(e.selector)?.addEventListener(e.eventName, e.callback);
         });
@@ -34,28 +31,14 @@ export class ViewModel<T> {
         return Array.from(this.elem.querySelectorAll(selector));
     }
 
-    protected emit(eventName: string): void {
-        this.emitter.dispatchEvent(new CustomEvent(eventName));
-    }
-
     protected getDataset(): DOMStringMap {
         return this.elem.dataset;
     }
 
     protected render(): void {}
 
-    public getState(): T {
-        return this.state;
-    }
-
-    public setState(partial: Partial<T>): void {
-        const newState = { ...this.state, ...partial };
-        this.state = newState;
+    public override setState(partial: Partial<T>): void {
+        super.setState(partial);
         this.render();
-        this.emit(EVENT_UPDATE_STATE);
-    }
-
-    public on(eventName: string, callback: EventListenerOrEventListenerObject): void {
-        this.emitter.addEventListener(eventName, callback);
     }
 }

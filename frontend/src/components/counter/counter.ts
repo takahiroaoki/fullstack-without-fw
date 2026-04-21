@@ -12,7 +12,7 @@ export class Counter extends ViewModel<CounterState> {
         return Number(this.getDataset().initialCount || 0);
     }
 
-    protected getEventSettings(): EventSetting[] {
+    protected override getEventSettings(): EventSetting[] {
         return [
             {
                 selector: '.counter__increment',
@@ -31,7 +31,7 @@ export class Counter extends ViewModel<CounterState> {
         ];
     }
 
-    protected render(): void {
+    protected override render(): void {
         this.select('.counter__count')!.textContent = String(this.getState().count);
     }
 }
