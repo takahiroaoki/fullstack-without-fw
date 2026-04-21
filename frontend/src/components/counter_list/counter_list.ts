@@ -1,4 +1,4 @@
-import { ViewModel, EVENT_UPDATE_STATE } from '@src/core/view-model';
+import { ViewModel, EVENT_UPDATE_STATE } from '@src/cores/view-model';
 import { Counter } from '@src/components/counter/counter';
 
 export type CounterListState = { total: number };
