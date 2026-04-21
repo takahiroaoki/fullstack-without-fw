@@ -1,4 +1,4 @@
-import { StateManager } from "./state-manager";
+import { StateManager } from './state-manager';
 
 export type EventSetting = {
     selector: string;
@@ -11,7 +11,7 @@ export class ViewModel<T> extends StateManager<T> {
 
     constructor(elem: HTMLElement, initialState: T) {
         super(initialState);
-        
+
         this.elem = elem;
         this.render();
         this.getEventSettings().forEach((e: EventSetting) => {

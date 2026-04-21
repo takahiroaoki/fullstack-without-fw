@@ -2,7 +2,7 @@ import { ViewModel } from '@src/cores/view-model';
 import { EVENT_UPDATE_STATE } from '@src/cores/state-manager';
 import { Counter } from '@src/components/counter/counter';
 
-export type CounterListState = { total: number };
+type CounterListState = { total: number };
 
 export class CounterList extends ViewModel<CounterListState> {
     private counters: Counter[];
