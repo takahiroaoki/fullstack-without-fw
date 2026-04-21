@@ -1,7 +1,8 @@
-import { ViewModel, EVENT_UPDATE_STATE } from '@src/core/view-model';
+import { ViewModel } from '@src/cores/view_model';
+import { EVENT_UPDATE_STATE } from '@src/cores/state_manager';
 import { Counter } from '@src/components/counter/counter';
 
-export type CounterListState = { total: number };
+type CounterListState = { total: number };
 
 export class CounterList extends ViewModel<CounterListState> {
     private counters: Counter[];
@@ -22,7 +23,7 @@ export class CounterList extends ViewModel<CounterListState> {
         return this.counters.reduce((sum, counter) => sum + counter.getState().count, 0);
     }
 
-    protected render(): void {
+    protected override render(): void {
         this.select('.counter-list__total__value')!.textContent = String(this.getState().total);
     }
 }

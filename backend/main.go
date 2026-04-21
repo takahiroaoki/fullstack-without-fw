@@ -19,6 +19,7 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("./resources/static/"))))
 	http.Handle("/sample1", handlers.NewSample1Handler())
 	http.Handle("/sample2", handlers.NewSample2Handler())
+	http.Handle("/api/context", handlers.NewContextHandler())
 
 	idleConnsClosed := make(chan struct{})
 	go func() {
