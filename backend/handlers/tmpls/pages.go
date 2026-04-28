@@ -27,9 +27,16 @@ func init() {
 	}
 }
 
+func pageFuncs() template.FuncMap {
+	return template.FuncMap{
+		"js":  JSPath,
+		"css": CssPath,
+	}
+}
+
 func getParsedTmpl(tmplPaths ...string) *template.Template {
 	base, _ := componentTmpls.Clone()
-	tmpl, _ := base.Funcs(templateFuncs()).ParseFiles(tmplPaths...)
+	tmpl, _ := base.Funcs(pageFuncs()).ParseFiles(tmplPaths...)
 	return tmpl
 }
 

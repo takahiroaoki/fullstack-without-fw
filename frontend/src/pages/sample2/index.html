@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{ css "pages/sample2/index.ts" }}" />
 {{ end }} {{ define "contents" }}
 <h1 class="header">Sample2: ViewModelを用いた複合コンポーネント</h1>
-<div class="counter-list-wrapper">{{ template "counter_list" .CounterList }}</div>
+<div class="counter-list-wrapper">{{ template "counter_list" dict "Ref" "counter-list" "Data" .CounterList }}</div>
 {{ end }} {{ define "script" }}
 <script type="module" src="{{ js "pages/sample2/index.ts" }}"></script>
 {{ end }}
