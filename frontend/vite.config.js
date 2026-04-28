@@ -47,14 +47,15 @@ export default defineConfig({
     build: {
         outDir: outDir,
         emptyOutDir: true,
+        manifest: true,
         rollupOptions: {
             input: getEntry(),
             output: {
-                entryFileNames: 'static/pages/[name]/index.js',
+                entryFileNames: 'static/pages/[name]/index-[hash].js',
                 chunkFileNames: 'static/assets/[name]-[hash].js',
                 assetFileNames: (assetInfo) => {
                     if (assetInfo.names?.some((name) => name.endsWith('.css'))) {
-                        return 'static/pages/[name]/index.css';
+                        return 'static/pages/[name]/index-[hash].css';
                     }
                     return 'static/assets/[name]-[hash].[ext]';
                 },

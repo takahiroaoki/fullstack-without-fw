@@ -1,9 +1,9 @@
 {{ define "head" }}
 <title>Sample1</title>
-<link rel="stylesheet" href="static/pages/sample1/index.css" />
+<link rel="stylesheet" href="{{ css "pages/sample1/index.ts" }}" />
 {{ end }} {{ define "contents" }}
 <h1 class="header">Sample1: ViewModelを用いた単一コンポーネント</h1>
 <div class="counter-wrapper">{{ template "counter" .Counter }}</div>
 {{ end }} {{ define "script" }}
-<script type="module" src="static/pages/sample1/index.js"></script>
+<script type="module" src="{{ js "pages/sample1/index.ts" }}"></script>
 {{ end }}

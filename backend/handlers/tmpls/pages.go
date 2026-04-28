@@ -29,7 +29,7 @@ func init() {
 
 func getParsedTmpl(tmplPaths ...string) *template.Template {
 	base, _ := componentTmpls.Clone()
-	tmpl, _ := base.ParseFiles(tmplPaths...)
+	tmpl, _ := base.Funcs(templateFuncs()).ParseFiles(tmplPaths...)
 	return tmpl
 }
 
