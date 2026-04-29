@@ -35,6 +35,10 @@ export class ViewModel<T> extends StateManager<T> {
         return this.elem.dataset;
     }
 
+    protected getRef(): string {
+        return this.getDataset().ref || '';
+    }
+
     protected render(): void {}
 
     public override setState(partial: Partial<T>): void {
