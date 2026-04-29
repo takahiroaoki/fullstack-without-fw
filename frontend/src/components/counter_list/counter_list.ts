@@ -9,7 +9,7 @@ export class CounterList extends ViewModel<CounterListState> {
 
     constructor(elem: HTMLElement) {
         super(elem, { total: 0 });
-        this.counters = this.selectAll('[data-ref="counter"]').map((counterElem) => new Counter(counterElem));
+        this.counters = this.selectAll(`[data-ref="${this.getRef()}__counter"]`).map((counterElem) => new Counter(counterElem));
         this.setState({ total: this.getTotalCount() });
 
         this.counters.forEach((counter) => {

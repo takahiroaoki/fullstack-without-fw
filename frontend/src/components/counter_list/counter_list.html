@@ -1,7 +1,11 @@
 {{ define "counter_list" }}
 <div class="counter-list" data-ref="{{ .Ref }}">
+    {{ $refPrefix := .Ref }}
     {{ range .Data.Counters }}
-    <div class="counter-list__item">{{ template "counter" dict "Ref" "counter" "Data" . }}</div>
+    {{ $ref := printf "%s__%s" $refPrefix "counter" }}
+    <div class="counter-list__item">
+        {{ template "counter" dict "Ref" $ref "Data" . }}
+    </div>
     {{ end }}
     <div class="counter-list__total">Total Count: <span class="counter-list__total__value"></span></div>
 </div>
