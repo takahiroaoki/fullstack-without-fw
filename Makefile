@@ -1,4 +1,8 @@
-.PHONY: run front back front-check
+.PHONY: setup run front back front-check
+setup:
+	cd frontend && npm ci
+	cd backend && go mod tidy
+
 run: front back
 
 front:
